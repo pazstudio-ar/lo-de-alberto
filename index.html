@@ -79,6 +79,13 @@ h2{margin:0 0 6px;font-weight:700;font-size:clamp(2rem,4.6vw,2.8rem);line-height
 @media(max-width:520px){.item .nombre i{display:none}}
 .nota{margin-top:6px;font-size:.92rem;color:var(--gris)}
 
+/* tiempos de cocción */
+.hervor{padding-top:0}
+.tiempos{list-style:none;margin:0;padding:0;max-width:520px}
+.tiempos li{display:flex;align-items:baseline;gap:10px;padding:10px 0;font-size:1.1rem}
+.tiempos i{flex:1;border-bottom:2px dotted #9fadc9;transform:translateY(-4px)}
+.tiempos b{font-family:var(--s);color:var(--tinta)}
+
 /* reseñas: como recortes con una sola tinta */
 .resenas{background:var(--tinta);color:#fff}
 .resenas h2{color:#fff}
@@ -160,6 +167,20 @@ dialog::backdrop{background:rgba(21,47,108,.55)}
   </div>
 </section>
 
+<section class="hervor">
+  <div class="wrap">
+    <h2>Cuánto hervirlas</h2>
+    <p class="intro">Siempre con agua bien hirviendo. Son los tiempos que recomendamos en el local.</p>
+    <ul class="tiempos">
+      <li><span>Ñoquis</span><i></i><b>1 min</b></li>
+      <li><span>Ravioles</span><i></i><b>2 min</b></li>
+      <li><span>Sorrentinos</span><i></i><b>3 min</b></li>
+      <li><span>Tallarines</span><i></i><b>3 min</b></li>
+      <li><span>Spaghettis</span><i></i><b>4 a 5 min</b></li>
+    </ul>
+  </div>
+</section>
+
 <section class="resenas">
   <div class="wrap">
     <h2>Lo que dicen los vecinos</h2>
@@ -230,6 +251,7 @@ dialog::backdrop{background:rgba(21,47,108,.55)}
   var cats=[
     {nombre:'Rellenas',items:[
       {id:'sorr-jyq',n:'Sorrentinos de jamón y queso',d:'Los más pedidos',u:'caja'},
+      {id:'sorr-4q',n:'Sorrentinos de 4 quesos',d:'Masa al huevo',u:'caja'},
       {id:'rav',n:'Ravioles',d:'Consultá los sabores del día',u:'plancha'},
       {id:'can',n:'Canelones',d:'Consultá los sabores del día',u:'docena'}]},
     {nombre:'Ñoquis',items:[
@@ -238,10 +260,16 @@ dialog::backdrop{background:rgba(21,47,108,.55)}
     {nombre:'Tallarines y masas',items:[
       {id:'tall-huevo',n:'Tallarines al huevo',d:'Cortados en el día',u:'kg'},
       {id:'tall-color',n:'Tallarines de colores',d:'',u:'kg'},
-      {id:'masa',n:'Masa para lasaña',d:'',u:'plancha'}]}
+      {id:'spag',n:'Spaghettis',d:'',u:'kg'},
+      {id:'fuch',n:'Fuchiles al huevo',d:'',u:'kg'},
+      {id:'masa',n:'Masa para lasaña',d:'',u:'plancha'}]},
+    {nombre:'Para el postre',items:[
+      {id:'tarta-bombon',n:'Tarta bombón',d:'Rellena con dulce de leche',u:'unidad'},
+      {id:'pastafrola',n:'Pasta frola',d:'Individual',u:'unidad'},
+      {id:'budin',n:'Budines',d:'Consultá los sabores',u:'unidad'}]}
   ];
   var cant={}, $l=document.getElementById('productos');
-  function plural(q,u){return q+' '+u+(q>1&&u!=='kg'?'s':'')}
+  function plural(q,u){if(q<2||u==='kg')return q+' '+u;return q+' '+(u==='unidad'?'unidades':u+'s')}
   function pintar(){
     $l.innerHTML='';
     cats.forEach(function(c){
