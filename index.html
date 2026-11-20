@@ -306,9 +306,9 @@ dialog::backdrop{background:rgba(21,47,108,.55)}
   var hs=[['Domingo',[[8.5,14]]],['Lunes',[[16.5,20.5]]],['Martes',[[9,13.5],[16.5,20.5]]],['Miércoles',[[9,13.5],[16.5,20.5]]],['Jueves',[[9,13.5],[16.5,20.5]]],['Viernes',[[9,13.5],[16.5,20.5]]],['Sábado',[[9,13.5],[16.5,20.5]]]];
   function fmt(h){var m=Math.round((h%1)*60);return Math.floor(h)+(m?':'+(m<10?'0':'')+m:'')}
   var now=new Date(),dia=now.getDay(),hora=now.getHours()+now.getMinutes()/60,tb=document.getElementById('horarios');
-  [1,2,3,4,5,6,0].forEach(function(i){
-    var tr=document.createElement('tr');if(i===dia)tr.className='hoy';
-    tr.innerHTML='<th>'+hs[i][0]+'</th><td>'+hs[i][1].map(function(r){return fmt(r[0])+' a '+fmt(r[1])+' h'}).join(' y ')+'</td>';tb.appendChild(tr);
+  [['Lunes',[1],'16:30 a 20:30 h'],['Martes a sábado',[2,3,4,5,6],'9 a 13:30 h<br>16:30 a 20:30 h'],['Domingos',[0],'8:30 a 14 h']].forEach(function(f){
+    var tr=document.createElement('tr');if(f[1].indexOf(dia)>-1)tr.className='hoy';
+    tr.innerHTML='<th>'+f[0]+'</th><td>'+f[2]+'</td>';tb.appendChild(tr);
   });
   var ab=hs[dia][1].some(function(r){return hora>=r[0]&&hora<r[1]});
   document.getElementById('estado').textContent=ab?'Ahora: abierto':'Ahora: cerrado';
