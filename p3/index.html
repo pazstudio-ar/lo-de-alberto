@@ -61,8 +61,8 @@ section{padding:64px 0}
 .portada p{margin:18px 0 0;font-size:1.15rem;color:var(--gris);max-width:44ch}
 .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
 .nota-traslado{margin:20px 0 0;font-size:.95rem;color:var(--gris)}
-.collage{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.collage img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:22px;background:var(--celeste-claro)}
+.collage{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.collage img{width:100%;aspect-ratio:1;object-fit:cover;background:var(--celeste-claro)}
 .collage img:first-child{grid-column:1 / span 2;aspect-ratio:16/11}
 
 /* servicios */
@@ -77,16 +77,24 @@ section{padding:64px 0}
 
 /* cambios */
 .cambios{background:var(--blanco)}
-.galeria{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
-@media(max-width:760px){.galeria{grid-template-columns:1fr 1fr}}
-.galeria img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px;background:var(--celeste-claro)}
+.cambios .cabecera{display:flex;align-items:end;justify-content:space-between;gap:16px}
+.flechas{display:flex;gap:8px;flex:none;margin-bottom:28px}
+.flechas button{width:48px;height:48px;border:2px solid var(--negro);background:var(--blanco);color:var(--negro);cursor:pointer;display:grid;place-items:center}
+.flechas button:hover{background:var(--negro);color:#fff}
+.flechas button:disabled{opacity:.3;cursor:default;background:var(--blanco);color:var(--negro)}
+.flechas svg{width:20px;height:20px}
+.galeria{display:flex;gap:4px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-inline:max(18px,calc((100% - 1080px)/2));scroll-padding-inline:max(18px,calc((100% - 1080px)/2))}
+.galeria::-webkit-scrollbar{display:none}
+.galeria img{flex:0 0 clamp(240px,26vw,340px);aspect-ratio:4/5;object-fit:cover;scroll-snap-align:start;background:var(--celeste-claro)}
+@media(max-width:600px){.galeria img{flex-basis:78vw}}
+.contador{margin:14px 0 0;font:600 .95rem var(--h);color:var(--gris)}
 
 /* ficha de turno */
 .turno{background:var(--negro);color:#fff}
 .turno h2{color:#fff}
 .turno .intro{color:#B9C3CC}
 .turno .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:start}
-@media(max-width:860px){.turno .wrap{grid-template-columns:minmax(0,1fr);gap:8px}}
+@media(max-width:860px){.turno .wrap{grid-template-columns:minmax(0,1fr);gap:30px}}
 .pasos-ficha{margin:0;padding:0;list-style:none;color:#DDE5EB}
 .pasos-ficha li{padding:8px 0 8px 30px;position:relative}
 .pasos-ficha li::before{content:"";position:absolute;left:0;top:13px;width:16px;height:16px;border-radius:50%;background:var(--celeste)}
@@ -169,20 +177,27 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 </section>
 
 <section class="cambios" id="cambios">
-  <div class="wrap">
-    <h2>Así salen de Huellitas</h2>
-    <p class="intro">Algunos de los perros que pasaron por la peluquería.</p>
-    <div class="galeria">
-      <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9R5o0vO4YzytpG70VmK3FWMDRjXVo7v4EMUDVIKRZvZKvNougdwZ-BlIzddcvUK54nAsMc4IZRlEx3e3R3xdeFkvDb7JyOkjDjO9WYAThwZ60TbsDWf5K-mF8hFDvJsLbsbrVlu_H5B7ePE=w500-h620-k-no" alt="Perro después del baño" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RjwTILg3Bc74As416n2RlCzWaYfV4CTvq2LgOcj96jObHR6Gou3CVUKVpH0uijFDE4CGfmfWQNqlm41wkw2VCSPU7-wBiA6GcnMxCWpz3yxlIbe8KgUwVZ27_t7VgZEqW7M379ZUDJKLc=w500-h620-k-no" alt="Perro después del corte" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TrFuqsaSYcSsuZXJP7YzeR6mzW8BlVf2tdrQBsKq6cNJ0hf5F8RkshOu_s63CIxV2bsFpzctz6rqsxivc_Pl7UnWCt-c0rVluW_aOq8Sz3rd6jReawPY0LpghPKk3lirCBD234yAe3nA5t=w500-h620-k-no" alt="Perro recién peinado" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9R74ImlgXC7DNf63W13pFQ6rNfuJhrT45D8yj3FPWPbU7cdee1cvVkVdL6XLuBhI9pd-blGmv5P_Qo7DOljUzhcAhw-iCt0S5JA_iI5PcWWTiPOCtL0c9rTjfZZi62B5YYMSkoMS5VmhY7m=w500-h620-k-no" alt="Perro con pañuelo" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Srt7_udz5gcnECfhUNXa7aLVDlPZPjPpsuhzPBVe1WF1M3c2wbUhpfcVmEYVL4H84-eOkXhhCevxMHSnR0VyJMJoO5nXOh4riI7ehXgycRY9fXkS-hn1NfAKsjBiCj1O6iKAU2anOC_f8=w500-h620-k-no" alt="Perro después del baño" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RNDn6Z6lEfsjeQj3DcaFYorVsR5HkAqm3N5vHLpRpMch4nx2_ruGFDqRxRjN6OT1vCXGLxjFwfYBONB0hsbXbiFxrlefgYvZMYpOjXm9JFVgTON4SN_gtA_1B82gQzEQZ0UgO3C85yW8Wi=w500-h620-k-no" alt="Perro sentado en la mesa de la peluquería" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QYLbeqRpq0tKtQ6m0CnxBo6QncfTUXDXjLnkLVS4550sPftWnL3GdInryghtxw2Ft3ByCw0mrJDeZgSkTP3T6mHRJbyYGdaRHsNMBjpxv0u-aK4tT08YsMGAusj99UkfkUKz2ymr03kPo=w500-h620-k-no" alt="Perro después del corte" loading="lazy">
-      <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RHwptfpjtomZ1MsJSyaZTomZaG-bpe5ISpxrMeSIyZNiwxjvpjUhTJH7I2ygWOU1gOrXTyv8N-1LtTh3WsMZ3BrhwzBQo13Za0peDAkjRw_yJNwPQKN9lTsqPrVm7GVAdl3ys7CdS0qhqP=w500-h620-k-no" alt="Perro con su pañuelo" loading="lazy">
+  <div class="wrap cabecera">
+    <div>
+      <h2>Así salen de Huellitas</h2>
+      <p class="intro">Algunos de los perros que pasaron por la peluquería. Deslizá para ver más.</p>
+    </div>
+    <div class="flechas">
+      <button type="button" id="ant" aria-label="Foto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button type="button" id="sig" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
   </div>
+  <div class="galeria" id="galeria" tabindex="0" aria-label="Fotos de perros después de la peluquería">
+    <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9R5o0vO4YzytpG70VmK3FWMDRjXVo7v4EMUDVIKRZvZKvNougdwZ-BlIzddcvUK54nAsMc4IZRlEx3e3R3xdeFkvDb7JyOkjDjO9WYAThwZ60TbsDWf5K-mF8hFDvJsLbsbrVlu_H5B7ePE=w500-h620-k-no" alt="Perro después del baño" loading="lazy">
+    <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RjwTILg3Bc74As416n2RlCzWaYfV4CTvq2LgOcj96jObHR6Gou3CVUKVpH0uijFDE4CGfmfWQNqlm41wkw2VCSPU7-wBiA6GcnMxCWpz3yxlIbe8KgUwVZ27_t7VgZEqW7M379ZUDJKLc=w500-h620-k-no" alt="Perro después del corte" loading="lazy">
+    <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TrFuqsaSYcSsuZXJP7YzeR6mzW8BlVf2tdrQBsKq6cNJ0hf5F8RkshOu_s63CIxV2bsFpzctz6rqsxivc_Pl7UnWCt-c0rVluW_aOq8Sz3rd6jReawPY0LpghPKk3lirCBD234yAe3nA5t=w500-h620-k-no" alt="Perro recién peinado" loading="lazy">
+    <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9R74ImlgXC7DNf63W13pFQ6rNfuJhrT45D8yj3FPWPbU7cdee1cvVkVdL6XLuBhI9pd-blGmv5P_Qo7DOljUzhcAhw-iCt0S5JA_iI5PcWWTiPOCtL0c9rTjfZZi62B5YYMSkoMS5VmhY7m=w500-h620-k-no" alt="Perro con pañuelo" loading="lazy">
+    <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Srt7_udz5gcnECfhUNXa7aLVDlPZPjPpsuhzPBVe1WF1M3c2wbUhpfcVmEYVL4H84-eOkXhhCevxMHSnR0VyJMJoO5nXOh4riI7ehXgycRY9fXkS-hn1NfAKsjBiCj1O6iKAU2anOC_f8=w500-h620-k-no" alt="Perro después del baño" loading="lazy">
+    <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RNDn6Z6lEfsjeQj3DcaFYorVsR5HkAqm3N5vHLpRpMch4nx2_ruGFDqRxRjN6OT1vCXGLxjFwfYBONB0hsbXbiFxrlefgYvZMYpOjXm9JFVgTON4SN_gtA_1B82gQzEQZ0UgO3C85yW8Wi=w500-h620-k-no" alt="Perro sentado en la mesa de la peluquería" loading="lazy">
+    <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QYLbeqRpq0tKtQ6m0CnxBo6QncfTUXDXjLnkLVS4550sPftWnL3GdInryghtxw2Ft3ByCw0mrJDeZgSkTP3T6mHRJbyYGdaRHsNMBjpxv0u-aK4tT08YsMGAusj99UkfkUKz2ymr03kPo=w500-h620-k-no" alt="Perro después del corte" loading="lazy">
+    <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RHwptfpjtomZ1MsJSyaZTomZaG-bpe5ISpxrMeSIyZNiwxjvpjUhTJH7I2ygWOU1gOrXTyv8N-1LtTh3WsMZ3BrhwzBQo13Za0peDAkjRw_yJNwPQKN9lTsqPrVm7GVAdl3ys7CdS0qhqP=w500-h620-k-no" alt="Perro con su pañuelo" loading="lazy">
+  </div>
+  <div class="wrap"><p class="contador" id="contador"></p></div>
 </section>
 
 <section class="turno" id="turno">
@@ -267,6 +282,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 
 <script>
 (function(){
+  var g=document.getElementById('galeria'),fotos=g.querySelectorAll('img'),ant=document.getElementById('ant'),sig=document.getElementById('sig'),cont=document.getElementById('contador');
+  function paso(){return fotos[0].getBoundingClientRect().width+4}
+  function act(){var i=Math.round(g.scrollLeft/paso());cont.textContent=(i+1)+' / '+fotos.length;ant.disabled=g.scrollLeft<5;sig.disabled=g.scrollLeft+g.clientWidth>=g.scrollWidth-5}
+  ant.addEventListener('click',function(){g.scrollBy({left:-paso(),behavior:'smooth'})});
+  sig.addEventListener('click',function(){g.scrollBy({left:paso(),behavior:'smooth'})});
+  g.addEventListener('scroll',act,{passive:true});window.addEventListener('resize',act);act();
   var hoy=new Date().getDay(), tb=document.getElementById('horarios');
   [['Lunes a viernes','9 a 18 h',hoy>=1&&hoy<=5],['Sábados','9 a 14 h',hoy===6],['Domingos','Cerrado',hoy===0]].forEach(function(r){
     var tr=document.createElement('tr');if(r[2])tr.className='hoy';tr.innerHTML='<th>'+r[0]+'</th><td>'+r[1]+'</td>';tb.appendChild(tr);
